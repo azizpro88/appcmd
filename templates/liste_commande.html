@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="fr">
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Commande N° </title>
+  <script>
+    const today = new Date();
+
+function formatDate() {
+	//
+  date=new Date();
+  document.getElementById("d").innerHTML="Date : " + date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear() ;
+}
+
+
+  </script>
+
+</head>
+<body onload="formatDate()">
+
+<div style="margin:40px 80px 20px 80px; text-align: center;"><H3><u>BON DE COMMANDE ET RECEPTION</u></H3></div>
+<h5><div id="d" style="text-align: right ; margin:40px 200px 20px 0px ;">  </div></h5>
+<div style="margin:0px 80px 20px 80px; border-right: 1px solid #D5D8DC;border-left: 1px solid #D5D8DC;border-bottom: 1px solid #D5D8DC; border-radius: 25px;">
+
+<table class="table table-hover" style="margin:40px 78px 20px 0px;">
+    <thead>
+      <tr>
+        <!--<th scope="col">ID <br/>Commande</th>
+        <th scope="col">N°<br/>Commande <br/></th>-->
+        <th scope="col">Article<br/></th>
+        <th scope="col">Fournisseur<br/></th>
+        <th scope="col">Site<br/></th>
+        <th scope="col">Quantité <br/> Commandé</th>
+        <th scope="col">Quantité <br/>Reçue</th>
+        <th scope="col">Ecart</th>
+        <th scope="col">Date de <br/>Commande</th>
+      </tr>
+    </thead>
+   
+    <tbody>
+        {% for x in liste %}
+    <tr>
+        <td>{{x.article}}</td>
+        <td>{{x.fournisseur}}</td>
+        <td>{{x.site}}</td>
+        <td>{{x.quantite_commande}}</td>
+        <td>{{x.quantite_recue}}</td>
+        <td>{{x.ecart}}</td>
+        <td> {{x.date_commande|date:"d/m/Y"}}</td>
+     </tr>
+     {% endfor %}
+    </tbody>
+    
+  </table>
+</div>
+<div style="margin:40px 80px 20px 80px; text-align: center;"><u><h5>Cachet et Signature</u></h5></div>
+{% endblock content %}
+
+</body>
+
+</html>

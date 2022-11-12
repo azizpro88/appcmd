@@ -1,0 +1,23 @@
+<!--<td><a href="{% url 'detail' x.id %}"><h5>{{x.id}}</h5></a></td>-->
+<!-- <td><h5>{{x.lignecommande}}</h5></a></td>-->
+
+if 'search' in request.GET:
+        search=request.GET['search']
+        liste=Commande.objects.filter(lignecommande=search)
+    else:
+        liste=Commande.objects.all()
+    context={
+         'liste':liste
+    }
+    return render(request,'liste_commande.html',context)
+
+    <div style="margin:80px 80px 0px 80px; text-align: center;"><H3><u>BON DE COMMANDE ET RECEPTION</u></H3></div>
+<div style="text-align: right ; margin:40px 200px 20px 0px ;"> Date : </div>
+
+function formatDate(date) {
+    return [
+      padTo2Digits(date.getDate()),
+      padTo2Digits(date.getMonth() + 1),
+      date.getFullYear(),
+    ].join('/');
+  }
